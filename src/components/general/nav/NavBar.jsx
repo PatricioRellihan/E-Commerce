@@ -1,15 +1,17 @@
-import './Nav.css'
+import './NavBar.css'
 import '../../../reset.css'
+import SearchWidget from './SearchWidget'
+import CartWidget from './CartWidget'
+import UserWidget from './UserWidget'
 import NavItem from './NavItem'
-import {FaSearch} from 'react-icons/fa'
-import {FaShoppingCart} from 'react-icons/fa'
-import {FaUser} from 'react-icons/fa'
+import Container from 'react-bootstrap/Container'
 
-function Nav({title}) {
+
+function NavBar({title}) {
 
     return (
         <header>
-            <div className='container'>
+            <Container>
                 <h1><a href="#">{title}</a></h1>
 
                 <nav>
@@ -23,13 +25,13 @@ function Nav({title}) {
                 </nav>
 
                 <ul>
-                    <li><a href='#'><FaSearch size='20' /></a></li>
-                    <li><a href='#'><FaShoppingCart size='20' /></a></li>
-                    <li><a href='#'><FaUser size='20' /></a></li>
+                    <SearchWidget url='#' />
+                    <CartWidget url='#' />
+                    <UserWidget url='#' />
                 </ul>
-            </div>
+            </Container>
         </header>
     )
 }
 
-export default Nav;
+export default NavBar;

@@ -1,11 +1,19 @@
 import './reset.css'
-import Nav from './components/general/nav/Nav'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import NavBar from './components/general/nav/NavBar'
+import ItemListContainer from './components/general/ItemListContainer'
+
 
 function App() {
 
   return (
-    <Nav title='GG' />
+    <>
+    <NavBar title='GG' />
+
+    <ItemListContainer greeting='Aca va a ir la lista!' />
+    </>
   )
 }
 
 export default App;
+
