@@ -14,7 +14,7 @@ a:hover {
 
 header {
     background: var(--main-color);
-    padding: 2rem 0;
+    padding: 1.2rem 0;
   }
 
   header .container {
@@ -49,6 +49,10 @@ header {
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 16px;
     letter-spacing: 1px;
+  }
+
+  nav ul {
+    margin-bottom: 4px;
   }
 
  

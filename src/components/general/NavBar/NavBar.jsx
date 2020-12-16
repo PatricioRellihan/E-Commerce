@@ -1,9 +1,8 @@
 import './NavBar.css'
-import '../../../reset.css'
-import SearchWidget from './SearchWidget'
-import CartWidget from './CartWidget'
-import UserWidget from './UserWidget'
-import NavItem from './NavItem'
+import SearchWidget from '../SearchWidget/SearchWidget'
+import CartWidget from '../CartWidget/CartWidget'
+import UserWidget from '../UserWidget/UserWidget'
+import NavItem from '../NavItem/NavItem'
 import Container from 'react-bootstrap/Container'
 
 

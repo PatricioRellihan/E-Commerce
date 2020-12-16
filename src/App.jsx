@@ -1,7 +1,7 @@
 import './reset.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import NavBar from './components/general/nav/NavBar'
-import ItemListContainer from './components/general/ItemListContainer'
+import NavBar from './components/general/NavBar/NavBar'
+import FeaturedProducts from './components/Home/FeaturedProducts/FeaturedProducts'
 
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <>
     <NavBar title='GG' />
 
-    <ItemListContainer greeting='Aca va a ir la lista!' />
+    <FeaturedProducts />
     </>
   )
 }

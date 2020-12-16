@@ -1,0 +1,8 @@
+.featuredProducts {
+    display: flex;
+    flex-direction: row;
+}
+
+.featuredProducts li {
+    margin: 1rem;
+}

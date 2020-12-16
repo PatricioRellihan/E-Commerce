@@ -1,0 +1,74 @@
+.card {
+    background-color: var(--card-color);
+    box-shadow: 3px 3px 10px 1px rgba(0,0,0,0.4);
+    
+}
+
+.card:hover {
+    box-shadow: 3px 3px 10px 1px rgba(0,0,0,0.6);
+  }
+
+  .card img {
+      width: 100%;
+  }
+
+  .card-title {
+      color: var(--white);
+  }
+
+  .card-body p {
+      color: var(--white)
+  }
+
+  .card div .qty button {
+    width: 20%;
+    border: none;
+    padding: 0.2rem;
+    outline: none;
+    cursor: pointer;
+    background: var(--grey);
+    color: var(--blanco);
+    font-size: 1.5rem;
+  }
+
+  .card div .qty button:disabled {
+    background: rgb(131, 131, 131);
+    cursor: no-drop;
+  }
+
+  .btnSub {
+    border-top-left-radius: 0.4rem;
+    border-bottom-left-radius: 0.4rem;
+  }
+
+  .btnAdd {
+    border-top-right-radius: 0.4rem;
+    border-bottom-right-radius: 0.4rem;
+
+  }
+
+ 
+  .card div .qty input {
+    width: 60%;
+    text-align: center;
+    border: none;
+    padding: 0.2rem;
+    text-align: center;
+    font-size: 1.5rem;
+    outline: none;
+    margin-bottom: 0.5rem;
+  }
+
+  #agregarAlCarrito {
+    width: 80%;
+    border: none;
+    padding: 0.2rem;
+    outline: none;
+    cursor: pointer;
+    background: var(--grey);
+    color: var(--blanco);
+    font-size: 1.5rem;
+    border-radius: 0.4rem;
+    text-align: center;
+    margin: auto;
+  }
