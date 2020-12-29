@@ -1,9 +1,8 @@
 import './NavBar.css'
-import SearchWidget from '../SearchWidget/SearchWidget'
-import CartWidget from '../CartWidget/CartWidget'
-import UserWidget from '../UserWidget/UserWidget'
+import {FaShoppingCart, FaSearch, FaUser} from 'react-icons/fa'
 import NavItem from '../NavItem/NavItem'
 import Container from 'react-bootstrap/Container'
+import { Link } from 'react-router-dom'
 
 
 function NavBar({title}) {
@@ -11,22 +10,28 @@ function NavBar({title}) {
     return (
         <header>
             <Container>
-                <h1><a href="#">{title}</a></h1>
+                <h1><Link to="/">{title}</Link></h1>
 
                 <nav>
                     <ul>
-                        <NavItem text="Acción" url='#' />
-                        <NavItem text="Aventura" url='#' />
-                        <NavItem text="Estrategia" url='#' />
-                        <NavItem text="RPG" url='#' />
-                        <NavItem text="Deportes" url='#' />
+                        <NavItem text="Acción" url='/category/accion' />
+                        <NavItem text="Aventura" url='/category/aventura' />
+                        <NavItem text="Estrategia" url='/category/estrategia' />
+                        <NavItem text="RPG" url='/category/rpg' />
+                        <NavItem text="Deportes" url='/category/deportes' />
                     </ul>
                 </nav>
 
                 <ul>
-                    <SearchWidget url='#' />
-                    <CartWidget url='#' />
-                    <UserWidget url='#' />
+                    <li>
+                        <a href='#'><FaSearch size='20' /></a>
+                    </li>
+                    <li>
+                        <a href='#'><FaShoppingCart size='20' /></a>
+                    </li>
+                    <li>
+                        <a href='#'><FaUser size='20' /></a>
+                    </li>
                 </ul>
             </Container>
         </header>

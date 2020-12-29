@@ -1,7 +1,8 @@
 import {useState} from 'react';
 import './ProductCard.css';
+import { Link } from 'react-router-dom'
 
-const ProductCard = ({titulo, precio, rutaImagen}) => {
+const ProductCard = ({titulo, precio, rutaImagen, id}) => {
     const [qty, setQty] = useState(1);
     const stock = 5;
 
@@ -33,6 +34,7 @@ const ProductCard = ({titulo, precio, rutaImagen}) => {
                 <p>${precio}</p>
 
                 <button id="agregarAlCarrito" onClick={onAdd}>Agregar al carrito</button>
+                <button><Link to ={`/detail/${id}`}>Ver más</Link></button>
             </div>
         </article>
     )

@@ -1,10 +1,11 @@
-import {FaShoppingCart} from 'react-icons/fa'
 
-const CartWidget = ({url='#'}) => {
+
+const CartWidget = ({show, action}) => {
     return (
-        <li>
-            <a href={url}><FaShoppingCart size='20' /></a>
-        </li>
+        <div className={`widgetCart ${show ? 'open' : 'close'}`}>
+            <p>Soy un widget</p>
+            <button onClick={action}>Cerrar widget</button>
+        </div>
     )
 }
 

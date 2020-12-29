@@ -1,8 +1,8 @@
-.featuredProducts {
+.ItemListContainer {
     display: flex;
     flex-direction: row;
 }
 
-.featuredProducts li {
+.ItemListContainer li {
     margin: 1rem;
 }

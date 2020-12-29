@@ -1,66 +1,57 @@
 import {useState, useEffect} from 'react';
 import ProductCard from "../../general/ProductCard/ProductCard";
-import "./FeaturedProducts.css"
+import productsDB from '../../DataBase/db'
+import { useParams } from 'react-router-dom'
+import "./ItemListContainer.css"
 
 
-const FeaturedProducts = () => {
+const ItemListContainer = () => {
 
     const [items, setItems] = useState([]);
 
-    const products = [
-        {
-            id: 1,
-            titulo: 'Doom Eternal',
-            precio: 500,
-            rutaImagen: "/img/covers/cover_doom_eternal.jpg",
-        },
-        {
-            id: 2,
-            titulo: 'Journey',
-            precio: 300,
-            rutaImagen: "/img/covers/cover_journey.jpg",
-        },
-        {
-            id: 3,
-            titulo: 'Hollow Knight',
-            precio: 600,
-            rutaImagen: "/img/covers/cover_hollow_knight.jpg",
-        },
-        {
-            id: 4,
-            titulo: 'Titanfall 2',
-            precio: 247,
-            rutaImagen: "/img/covers/cover_titanfall2.jpg",
-        },
-    ]
+    const {category_name} = useParams();
 
-    useEffect(() => {
-        getProducts.then(rta => setItems(rta));
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
+    
     const getProducts = new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(products);
+            resolve(productsDB);
         }, 2000)
     })
 
+    const categoryProducts = () => {
+        getProducts.then(
+            (respuesta) => {
+                if (category_name) {
+                    const productByCategory = respuesta.filter(
+                        (product) => product.category === category_name
+                    );
+                    setItems(productByCategory);
+                }
+                else {
+                    setItems(respuesta)
+                }
+            })
+    }
+
+    useEffect(() => categoryProducts(), [category_name]);
+
     return (
-        <section className="featuredProducts">
+        <section className="ItemListContainer">
             <div className="container">
             {
                 items.length ?
                 <>
                     <h2>Productos destacados</h2>
 
-                    <ul className="featuredProducts">
+                    <ul className="ItemListContainer">
                         {
                              items.map(item => (
-                                <li key={item.id}>
+                                <li key={item.id} >
                                     <ProductCard 
                                         titulo={item.titulo} 
                                         precio={item.precio} 
                                         rutaImagen={item.rutaImagen}
+                                        id={item.id}
                                     />
                                 </li>
                             ))
@@ -71,7 +62,7 @@ const FeaturedProducts = () => {
             }
                 {/* <h2>Productos destacados</h2>
 
-                <ul className="featuredProducts">
+                <ul className="ItemListContainer">
                     <li><ProductCard titulo="Doom Eternal" precio="500" rutaImagen="/img/covers/cover_doom_eternal.jpg" /></li>
                     <li><ProductCard titulo="Journey" precio="300" rutaImagen="/img/covers/cover_journey.jpg" /></li>
                     <li><ProductCard titulo="Hollow Knight" precio="750" rutaImagen="/img/covers/cover_hollow_knight.jpg" /></li>
@@ -83,4 +74,4 @@ const FeaturedProducts = () => {
    
 }
 
-export default FeaturedProducts;
+export default ItemListContainer;
