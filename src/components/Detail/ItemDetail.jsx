@@ -1,6 +1,13 @@
-
+import { useHistory } from 'react-router-dom';
 
 const ItemDetail = ({item}) => {
+
+    let historialRutas = useHistory();
+
+    const handleClickAddToCart = e => {
+        alert("Agregaste un producto a tu carrito!")
+        historialRutas.push("/cart")
+    }
 
     return(
         <article>
@@ -8,7 +15,7 @@ const ItemDetail = ({item}) => {
             <img src={item.rutaImagen} alt=""/>
             <p>{item.descripcion}</p>
             <p>{item.precio}</p>
-            <button>Agregar al carrito</button>
+            <button onClick={handleClickAddToCart} >Agregar al carrito</button>
         </article>
     )
 }

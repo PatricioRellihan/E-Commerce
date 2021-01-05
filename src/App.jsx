@@ -6,6 +6,7 @@ import Error404 from './components/general/Error404'
 import ItemDetailContainer from './components/Detail/ItemDetailContainer'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import ItemListContainer from './components/Home/ItemListContainer/ItemListContainer'
+import CartContainer from './components/general/Cart/CartContainer'
 
 
 function App() {
@@ -25,10 +26,10 @@ function App() {
         <Route path="/detail/:id">
           <ItemDetailContainer />
         </Route>
-        {/* <Route path="/cart">
-          <Cart />
+        <Route path="/cart">
+          <CartContainer />
         </Route>
-        <Route path="/checkout">
+        {/* <Route path="/checkout">
           <Checkout />
         </Route> */}
         <Route path="*">

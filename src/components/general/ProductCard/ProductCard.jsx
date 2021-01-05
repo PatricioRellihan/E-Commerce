@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import './ProductCard.css';
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 const ProductCard = ({titulo, precio, rutaImagen, id}) => {
     const [qty, setQty] = useState(1);
@@ -12,8 +12,10 @@ const ProductCard = ({titulo, precio, rutaImagen, id}) => {
         }
     }
 
+    let historialRutas = useHistory();
     const onAdd = () => {
         alert(`Agregaste ${qty} productos al carrito`);
+        historialRutas.push("/cart")
     }
 
     return (
