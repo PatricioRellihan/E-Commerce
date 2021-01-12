@@ -46,12 +46,10 @@ const ItemListContainer = () => {
                     <ul className="ItemListContainer">
                         {
                              items.map(item => (
-                                <li key={item.id} >
+                                <li key={item.id} className="card">
                                     <ProductCard 
-                                        titulo={item.titulo} 
-                                        precio={item.precio} 
-                                        rutaImagen={item.rutaImagen}
-                                        id={item.id}
+                                        item={item} 
+                                        
                                     />
                                 </li>
                             ))

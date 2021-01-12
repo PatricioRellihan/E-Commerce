@@ -1,8 +1,10 @@
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 import './ProductCard.css';
 import { Link, useHistory } from 'react-router-dom'
+import {Store} from '../../../Store'
 
-const ProductCard = ({titulo, precio, rutaImagen, id}) => {
+const ProductCard = ({item}) => {
+    const [data, setData] = useContext(Store)
     const [qty, setQty] = useState(1);
     const stock = 5;
 
@@ -12,17 +14,22 @@ const ProductCard = ({titulo, precio, rutaImagen, id}) => {
         }
     }
 
-    let historialRutas = useHistory();
+    let history = useHistory();
     const onAdd = () => {
         alert(`Agregaste ${qty} productos al carrito`);
-        historialRutas.push("/cart")
+        setData({
+            ...data, 
+            cantidad: data.cantidad + qty,
+            items: [...data.items, item],
+        });
+        history.push("/cart")
     }
 
     return (
-        <article className="card">
-            <img className="card-img-top" src={rutaImagen} alt="Foto del producto"/>
+        <article>
+            <img className="card-img-top" src={item.rutaImagen} alt="Foto del producto"/>
             <div className="card-body">
-                <h3 className="card-title">{titulo}</h3>
+                <h3 className="card-title">{item.titulo}</h3>
                 <div className="qty">
                     <button className="btnSub"
                         disabled={qty === 1 ? 'disabled' : null } 
@@ -33,10 +40,10 @@ const ProductCard = ({titulo, precio, rutaImagen, id}) => {
                     <input type="text" value={qty} readOnly/>
                     <button className="btnAdd" onClick={() => setQty( qty<stock ? qty + 1 : qty)}>+</button>
                 </div>
-                <p>${precio}</p>
+                <p>${item.precio}</p>
 
                 <button id="agregarAlCarrito" onClick={onAdd}>Agregar al carrito</button>
-                <button><Link to ={`/detail/${id}`}>Ver más</Link></button>
+                <button><Link to ={`/detail/${item.id}`}>Ver más</Link></button>
             </div>
         </article>
     )

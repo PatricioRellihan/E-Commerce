@@ -2,10 +2,15 @@ import './NavBar.css'
 import {FaShoppingCart, FaSearch, FaUser} from 'react-icons/fa'
 import NavItem from '../NavItem/NavItem'
 import Container from 'react-bootstrap/Container'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 
 function NavBar({title}) {
+
+    let history = useHistory();
+    const onAdd = () => {
+        history.push("/cart")
+    }
 
     return (
         <header>
@@ -27,7 +32,7 @@ function NavBar({title}) {
                         <a href='#'><FaSearch size='20' /></a>
                     </li>
                     <li>
-                        <a href='#'><FaShoppingCart size='20' /></a>
+                        <a href='#' onClick={onAdd}><FaShoppingCart size='20' /></a>
                     </li>
                     <li>
                         <a href='#'><FaUser size='20' /></a>

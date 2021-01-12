@@ -1,8 +1,13 @@
 .ItemListContainer {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .ItemListContainer li {
     margin: 1rem;
+}
+
+.card {
+    max-width: 250px;
 }
