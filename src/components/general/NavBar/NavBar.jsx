@@ -1,6 +1,7 @@
 import './NavBar.css'
 import {FaShoppingCart, FaSearch, FaUser} from 'react-icons/fa'
 import NavItem from '../NavItem/NavItem'
+import NavCart from '../NavCart/NavCart'
 import Container from 'react-bootstrap/Container'
 import { Link, useHistory } from 'react-router-dom'
 
@@ -32,7 +33,7 @@ function NavBar({title}) {
                         <a href='#'><FaSearch size='20' /></a>
                     </li>
                     <li>
-                        <a href='#' onClick={onAdd}><FaShoppingCart size='20' /></a>
+                        <NavCart />
                     </li>
                     <li>
                         <a href='#'><FaUser size='20' /></a>

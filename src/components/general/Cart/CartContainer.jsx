@@ -24,7 +24,7 @@ const CartContainer = () => {
     <div className="container">
         <h1>Tu Carrito</h1>
         {
-          data.items.map(item => <><h2>{item.titulo}</h2><img src={item.rutaImagen} alt={item.titulo} /><p>${item.precio}</p></>)
+          data.items.map(item => <div key={item.id}><h2>{item.titulo}</h2><img src={item.rutaImagen} alt={item.titulo} /><p>${item.precio}</p></div>)
         }
     </div>
     )
