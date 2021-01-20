@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import ProductCard from "../../general/ProductCard/ProductCard";
-import productsDB from '../../DataBase/db'
+// import productsDB from '../../DataBase/db'
+import {getFirestore} from '../../DataBase'
 import { useParams } from 'react-router-dom'
 import "./ItemListContainer.css"
 
@@ -11,29 +12,52 @@ const ItemListContainer = () => {
 
     const {category_name} = useParams();
 
+    const db = getFirestore();
+
     
-    const getProducts = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(productsDB);
-        }, 2000)
-    })
+    // const getProducts = new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //         resolve(productsDB);
+    //     }, 2000)
+    // })
 
-    const categoryProducts = () => {
-        getProducts.then(
-            (respuesta) => {
-                if (category_name) {
-                    const productByCategory = respuesta.filter(
-                        (product) => product.category === category_name
-                    );
-                    setItems(productByCategory);
-                }
-                else {
-                    setItems(respuesta)
-                }
+    const getProducts = () => {
+        db.collection('productos')
+        // .where("outstanding", "==", true)
+        .get()
+        .then(docs => {
+            let arr = [];
+            docs.forEach(doc => {
+                arr.push({id: doc.id, data: doc.data()})
             })
+            setItems(arr);
+        })
+        .catch(e => console.log(e))
     }
+    
 
-    useEffect(() => categoryProducts(), [category_name]);
+    // const categoryProducts = () => {
+    //     getProducts.then(
+    //         (respuesta) => {
+    //             if (category_name) {
+    //                 const productByCategory = respuesta.filter(
+    //                     (product) => product.category === category_name
+    //                 );
+    //                 setItems(productByCategory);
+    //             }
+    //             else {
+    //                 setItems(respuesta)
+    //             }
+    //         })
+    // }
+
+    useEffect(() => {
+        getProducts();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
+
+
+
 
     return (
         <section className="ItemListContainer">
@@ -45,10 +69,10 @@ const ItemListContainer = () => {
 
                     <ul className="ItemListContainer">
                         {
-                             items.map(item => (
+                             items.map((item) => (
                                 <li key={item.id} className="card">
                                     <ProductCard 
-                                        item={item} 
+                                        item={item.data} 
                                         
                                     />
                                 </li>
@@ -58,14 +82,6 @@ const ItemListContainer = () => {
                 </> :
                 <p className="cargando">Cargando items...</p>
             }
-                {/* <h2>Productos destacados</h2>
-
-                <ul className="ItemListContainer">
-                    <li><ProductCard titulo="Doom Eternal" precio="500" rutaImagen="/img/covers/cover_doom_eternal.jpg" /></li>
-                    <li><ProductCard titulo="Journey" precio="300" rutaImagen="/img/covers/cover_journey.jpg" /></li>
-                    <li><ProductCard titulo="Hollow Knight" precio="750" rutaImagen="/img/covers/cover_hollow_knight.jpg" /></li>
-                    <li><ProductCard titulo="Titanfall 2" precio="100" rutaImagen="/img/covers/cover_titanfall2.jpg" /></li>
-                </ul> */}
             </div>
         </section>
     )
