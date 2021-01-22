@@ -21,7 +21,9 @@ const ProductCard = ({item}) => {
             ...data, 
             cantidad: data.cantidad + qty,
             items: [...data.items, item],
+            precioTotal: data.precioTotal + (data.precio * qty),
         });
+        console.log(data)
         history.push("/cart")
     }
 

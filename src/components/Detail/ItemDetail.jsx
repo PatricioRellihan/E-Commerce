@@ -13,6 +13,7 @@ const ItemDetail = ({item}) => {
             ...data, 
             cantidad: data.cantidad + qty,
             items: [...data.items, item],
+            precioTotal: data.precioTotal + (data.precio * qty),
         });
         history.push("/cart")
     }
